@@ -29,8 +29,8 @@ class Events extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'date', 'organizers', 'description'], 'required'],
-            [['title'], 'integer'],
+            [['title'], 'required', 'message' => 'Заполните поле'],
+            [['title'], 'string'],
             [['date'], 'safe'],
             [['description'], 'string'],
             [['organizers'], 'string', 'max' => 150],
@@ -44,10 +44,10 @@ class Events extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'date' => 'Date',
-            'organizers' => 'Organizers',
-            'description' => 'Description',
+            'title' => 'Название',
+            'date' => 'Дата проведения',
+            'organizers' => 'Организаторы',
+            'description' => 'Описание мероприятий',
         ];
     }
 }

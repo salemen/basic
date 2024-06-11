@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\Events;
-use app\models\OrganizersSearch;
+use app\models\EventsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -38,7 +38,7 @@ class EventsController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new OrganizersSearch();
+        $searchModel = new EventsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -69,13 +69,9 @@ class EventsController extends Controller
     {
         $model = new Events();
 
-        if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
-        } else {
-            $model->loadDefaultValues();
-        }
 
         return $this->render('create', [
             'model' => $model,

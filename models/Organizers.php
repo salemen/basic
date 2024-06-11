@@ -29,7 +29,7 @@ class Organizers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'email', 'phone', 'events'], 'required'],
+            [['name', 'email'], 'required', 'message' => 'Заполните поле'],
             [['name', 'events'], 'string'],
             [['phone'], 'integer'],
             [['email'], 'string', 'max' => 50],
@@ -43,10 +43,10 @@ class Organizers extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Фамилия Имя Отчество',
             'email' => 'Email',
-            'phone' => 'Phone',
-            'events' => 'Events',
+            'phone' => 'Телефон',
+            'events' => 'Проводимые мероприятия',
         ];
     }
 }
